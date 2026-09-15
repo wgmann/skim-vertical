@@ -1133,7 +1133,7 @@
             // Because of a PDFView bug, display properties can not be changed before it is placed in a window
             [secondaryPdfView setSynchronizedPDFView:pdfView];
             [secondaryPdfView setBackgroundColor:[pdfView backgroundColor]];
-            [secondaryPdfView setDisplaysPageBreaks:NO];
+            [secondaryPdfView setDisplaysPageBreaks:[pdfView displaysPageBreaks]];
             [secondaryPdfView setInterpolationQuality:[[NSUserDefaults standardUserDefaults] integerForKey:SKInterpolationQualityKey]];
             [secondaryPdfView setSynchronizeZoom:YES];
             [secondaryPdfView setDocument:[pdfView document]];
