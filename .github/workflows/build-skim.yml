@@ -1,0 +1,36 @@
+name: Build Skim
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - vertical-split
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: List project schemes/targets
+        run: xcodebuild -list -project Skim.xcodeproj
+
+      - name: Build Skim (Release, unsigned)
+        run: |
+          xcodebuild -configuration Release -target Skim -scheme Skim \
+            -destination "generic/platform=macOS" \
+            -derivedDataPath "$GITHUB_WORKSPACE/build" \
+            SYMROOT="$GITHUB_WORKSPACE/build/Products" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO
+
+      - name: Upload Skim.app artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Skim.app
+          path: build/Products/Release/Skim.app
