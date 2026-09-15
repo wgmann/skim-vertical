@@ -507,7 +507,7 @@ static NSArray *mergedSnapshotSetups(NSArray *setups1, NSArray *setups2);
     [item setMinimumThickness:MIN_PDF_PANE_HEIGHT + titleBarHeight];
     [pdfSplitViewController addSplitViewItem:item];
     
-    [[pdfSplitViewController splitView] setVertical:NO];
+    [[pdfSplitViewController splitView] setVertical:YES];
     
     view = [pdfSplitViewController view];
     [view setFrame:[centerContentView bounds]];
