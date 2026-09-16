@@ -1118,7 +1118,7 @@
             NSPoint point = frame.origin;
             PDFPage *page = nil;
             BOOL fixedAtBottom = [[[pdfView embeddedScrollView] contentView] isFlipped] == NO;
-            secondaryPdfView = [[SKSecondaryPDFView alloc] initWithFrame:NSMakeRect(0.0, 0.0, NSWidth(frame), 250.0)];
+            secondaryPdfView = [[SKSecondaryPDFView alloc] initWithFrame:NSMakeRect(0.0, 0.0, NSWidth(frame) / 2.0, 250.0)];
             [secondaryPdfView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             
             NSViewController *viewController = [[NSViewController alloc] init];
